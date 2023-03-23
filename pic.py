@@ -1,0 +1,1 @@
+text = "I'm from pic.py"
