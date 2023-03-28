@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html>
+ <head>
+ 	<h1><center>Additional Comments</center></h1>
+ </head>
+  <style>
+  .myDiv {
+  width: 600px;
+  border: 5px outset #FFB500;
+  background-color: #351C15;
+  text-align: left;
+  font-weight:bold;
+  font-size:1.25em;
+  }
+  </style>
+  <link rel = "stylesheet" href = "styles.css">
+
+ <body>
+ <div class="myDiv">
+ <p>&ensp; To/From locations: {to_from_locations}</p>
+ <p>&ensp; Package weight: {package_weight}</p>
+ <p>&ensp; Tracking number: {tracking_number}</p>
+ <p>&ensp; Shuttle time: {shuttle_time}</p>
+ <p>&ensp; Mileage: {mileage}</p>
+ <p>&ensp; Rating system: {rating_system}</p>
+ </div>
+ </body>
+</html>
+
+  Write the HTML code to a file
+ with open("output.html", "w") as file:
+     file.write(html_output)
