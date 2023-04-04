@@ -1,6 +1,4 @@
-# UPS-Project
-
-PSUEDOCODE
+# UPS-Project-PSUEDOCODE
 
 # Initialize the application with the following parameters:
 - Create the package information
@@ -34,7 +32,7 @@ Create schedulepickup function
 If it == refnum or 1z shipment label it will return the information about the package in to the html
 - Retrieve the package's status and update the customer on its current location and estimated delivery time (    information will go out as html
 
-#When a package has been delivered:
+# When a package has been delivered:
 If the package has been the delivery when the user input the tracking number and status show that it’s delivered , 
 -prompt pop up that ask the user to rate the system 1-5 star and also write the review if they want.  This will store in the database 
 Refname: rate 🙂
