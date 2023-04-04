@@ -6,7 +6,7 @@ import json
 def getDistance(origin,destination):
     UPS_Store = findNearbyStore(origin)
     # Call the Google Maps Distance Matrix API to get the travel time and distance
-    api_key ="AIzaSyCWmC0WgvwKTS__QgP0NFkjE_Ugr7QYDhg"  
+    api_key ="AIzQgP0NFkjE_Ugr7QYDhg"  
     # Replace with your own API key
     url = f"https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins={origin}&destinations={UPS_Store}&key={api_key}"
     response = requests.get(url)
@@ -25,7 +25,7 @@ def getDistance(origin,destination):
 def getEstimate(origin,destination):
     UPS_store=findNearbyStore(origin)
     # Call the Google Maps Distance Matrix API to get the travel time and distance
-    api_key ="AIzaSyCWmC0WgvwKTS__QgP0NFkjE_Ugr7QYDhg"  
+    api_key ="AIzaSy__QgP0NFkjE_Ugr7QYDhg"  
     # Replace with your own API key
     url = f"https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins={origin}&destinations={UPS_store}&key={api_key}"
     response = requests.get(url)
@@ -77,7 +77,7 @@ def print_package(package):
 
 #==========================================
 def findNearbyStore(origin):
-    API_KEY = 'AIzaSyCWmC0WgvwKTS__QgP0NFkjE_Ugr7QYDhg'
+    API_KEY = 'AIzQgP0NFkjE_Ugr7QYDhg'
     address = origin
 
     # Use the Geocoding API to get the latitude and longitude of the address
