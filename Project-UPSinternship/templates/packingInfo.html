@@ -1,0 +1,163 @@
+{% extends "tracking.html" %} {% block title %}Package Information{% endblock %} {% block content
+%}
+
+<head>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            margin: 20px auto;
+            max-width: 1200px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin: 20px auto;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        th,
+        td {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #333;
+            color: #fff;
+        }
+    </style>
+    <!-- <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            margin: 20px auto;
+            max-width: 1200px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin-top: 20px;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #333;
+            color: #fff;
+        }
+    </style> -->
+</head>
+
+<body>
+    <div class="container">
+        <h1>Package Information</h1>
+        <table>
+            <thead>
+                <thead>
+                    <tr>
+                        <th>Reference Number</th>
+                        <th>Name</th>
+                        <th>Weight</th>
+                        <th>Types</th>
+                        <th>Size</th>
+                        <th>Origin</th>
+                        <th>Destination</th>
+                        <th>Pickup Time</th>
+                        <th>Status</th>
+                        <th>Location</th>
+                    </tr>
+                </thead>
+                <tr>
+                    <td>{{ package_info.ReferenceNumber }}</td>
+                    <td>{{ package_info.Name }}</td>
+                    <td>{{ package_info.Weight }}</td>
+                    <td>{{ package_info.Types }}</td>
+                    <td>{{ package_info.Size }}</td>
+                    <td>{{ package_info.Origin }}</td>
+                    <td>{{ package_info.Destination }}</td>
+                    <td>{{ package_info.PickupTime }}</td>
+                    <td>{{ package_info.Status }}</td>
+                    <td>{{ package_info.Location }}</td>
+
+                </tr>
+            </thead>
+            <tbody id="package-details">
+                <!-- Package information will be inserted here by JavaScript -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function showPackageDetails(packageDetails) {
+            // Get the tbody element
+            var tbody = document.getElementById("package-details");
+
+            // Create a row for each package detail and append it to the tbody
+            packageDetails.forEach(function (detail) {
+                var tr = document.createElement("tr");
+
+                var packageId = document.createElement("td");
+                packageId.textContent = detail[0];
+                tr.appendChild(packageId);
+
+                var weight = document.createElement("td");
+                weight.textContent = detail[1];
+                tr.appendChild(weight);
+
+                var location = document.createElement("td");
+                location.textContent = detail[2];
+                tr.appendChild(location);
+
+                tbody.appendChild(tr);
+            });
+        }
+
+        // Get the package information from the server
+        var url = "http://localhost:5000/get_package_info?tracking_number=" + trackingNumber;
+        var request = new XMLHttpRequest();
+        request.open("GET", url);
+        request.onload = function () {
+            // Parse the response as JSON
+            var responseJson = JSON.parse(this.responseText);
+
+            // Show the package details in the table
+            showPackageDetails(responseJson);
+        };
+        request.send();
+    </script>
+</body>
+{%endblock%}

@@ -1,0 +1,88 @@
+import mysql.connector
+
+def checkPackage(driver_id):
+    # Connect to the MySQL database
+    conn = mysql.connector.connect(
+        host='your_host',
+        user='your_username',
+        password='your_password',
+        database='your_database'
+    )
+    
+    # Create a cursor to execute SQL queries
+    cursor = conn.cursor()
+    
+    # Get the driver's current location
+    query = "SELECT current_location FROM drivers WHERE id = %s"
+    cursor.execute(query, (driver_id,))
+    result = cursor.fetchone()
+    
+    if not result:
+        cursor.close()
+        conn.close()
+        return "Driver not found"
+    
+    driver_location = result[0]
+    
+    # Check if there is a nearby package to pick up
+    query = "SELECT id, origin, destination FROM packages WHERE status = 'Pending'"
+    cursor.execute(query)
+    nearby_packages = []
+    
+    for package_id, origin, destination in cursor:
+        if isClose(driver_location, origin):
+            nearby_packages.append((package_id, origin, destination))
+    
+    if not nearby_packages:
+        cursor.close()
+        conn.close()
+        return "No nearby packages"
+    
+    # Check if any package has the same destination as the driver's destination
+    for package in nearby_packages:
+        package_id, origin, destination = package
+        
+        if destination == driver_destination:
+            # Delivery on the way
+            update_query = "UPDATE packages SET status = 'Delivered' WHERE id = %s"
+            cursor.execute(update_query, (package_id,))
+            conn.commit()
+            
+            cursor.close()
+            conn.close()
+            return f"Package {package_id} delivered on the way"
+    
+    # Find another driver with a nearby destination
+    for package in nearby_packages:
+        package_id, origin, destination = package
+        
+        query = "SELECT id, current_location FROM drivers WHERE id != %s AND current_location != %s"
+        cursor.execute(query, (driver_id, driver_location))
+        
+        for other_driver_id, other_driver_location in cursor:
+            if isClose(other_driver_location, destination):
+                # Assign the package to the other driver
+                update_query = "UPDATE packages SET assigned_to = %s WHERE id = %s"
+                cursor.execute(update_query, (other_driver_id, package_id))
+                conn.commit()
+                
+                cursor.close()
+                conn.close()
+                return f"Package {package_id} assigned to driver {other_driver_id}"
+    
+    # No nearby driver found, drop the package to the warehouse
+    update_query = "UPDATE packages SET status = 'In Warehouse' WHERE id = %s"
+    cursor.execute(update_query, (package_id,))
+    conn.commit()
+    
+    cursor.close()
+    conn.close()
+    return f"No nearby driver found, package {package_id} dropped to warehouse"
+
+
+def isClose(location1, location2):
+    # Implement your logic to check if two locations are close
+    # For example, you can use a distance calculation algorithm
+    
+    # Placeholder implementation returning True for demonstration purposes
+    return True

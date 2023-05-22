@@ -1,0 +1,81 @@
+{% extends "tracking.html" %} {% block title %}Rating{% endblock %} {% block content
+%}
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>Rating Page</title>
+    <style>
+        /* Style the stars */
+        .star {
+            font-size: 24px;
+            color: gray;
+            cursor: pointer;
+        }
+
+        /* Style the checked stars */
+        .checked {
+            color: orange;
+        }
+
+        .center {
+            display: flex;
+            justify-content: top;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        .center2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="center">
+        <h1>Rate Your Experience</h1>
+        <p>Please select a rating:</p>
+        <div class="center2">
+            <span class="star" onclick="rate(1)">★</span>
+            <span class="star" onclick="rate(2)">★</span>
+            <span class="star" onclick="rate(3)">★</span>
+            <span class="star" onclick="rate(4)">★</span>
+            <span class="star" onclick="rate(5)">★</span>
+        </div>
+        <p>Your rating: <span id="rating"></span></p>
+    </div>
+    <script>
+        let rating = 0;
+
+        function rate(stars) {
+            // Get all the stars
+            const starsContainer = document.querySelectorAll('.star');
+
+            // Set the rating to the number of stars clicked
+            rating = stars;
+
+            // Loop through all the stars and set the checked ones to orange
+            for (let i = 0; i < starsContainer.length; i++) {
+                if (i < stars) {
+                    starsContainer[i].classList.add('checked');
+                } else {
+                    starsContainer[i].classList.remove('checked');
+                }
+            }
+
+            // Display the rating
+            document.getElementById('rating').innerHTML = rating;
+        }
+
+
+
+
+
+    </script>
+
+</body>
+{%endblock%}

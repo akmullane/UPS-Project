@@ -1,0 +1,56 @@
+# Get the latest update time from the database
+    cur.execute("SELECT * FROM package1")
+    result_set = cur.fetchall()
+
+    # Compare the latest result set with the previous result set
+    if result_set != last_result_set:
+        # If there's been an update, toggle the function
+        toggle_function(cur)
+        last_result_set = result_set
+
+        # ==================
+        cur.execute(
+            "SELECT origin FROM package1 WHERE status = 'pending' ORDER BY timestamp DESC LIMIT 1 "
+        )
+        latest_row = cur.fetchone()
+        # new_package = latest_row[0]  # access the first (and only) element of the tuple
+
+        # find nearby driver
+        # drivername, driverid = ALL.findNearbyDriver(new_package)
+        # print("The nearby package 1 : ", drivername, driverid)
+        # answer = input("Is david pick up the package? (y/n): ")
+        # if answer == 'y':
+        cur.execute("SELECT id,status FROM package1 ORDER BY status DESC LIMIT 1")
+        lastest_status = cur.fetchone()
+        # get the package ID from the user
+        package_id = lastest_status[0]
+        print(package_id)
+        # check if the package exists in the database
+        query = "SELECT status FROM package1 WHERE id = %s"
+        cur.execute(query, (package_id,))
+        result = cur.fetchone()
+
+        if result:
+            # update the status and location of the package
+            query = "UPDATE package1 SET status = 'in progress', location = %s WHERE id = %s"
+            location = input("Enter the driver destination: ")
+            cur.execute(query, (location, package_id))
+            conn.commit()
+            print("Package status and location updated successfully.")
+        else:
+            print("Package not found in the database.")
+
+        # driver will pickup the driver and update the status to "IN PROGRESS"
+        # function driverpick up and it will change hte status and
+        # if the ask the driver if he pickup , pickup
+        # won't show the status anymore
+        # calculate david will go delivery to destination or drop to nearbystore or give it to anotherdriver
+
+        # Close the database connection
+    else:
+        print("Nothing change")
+
+    # Close the database connection
+    cur.close()
+    conn.close()
+

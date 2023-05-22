@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>UPS PROJECT</title>
+</head>
+
+<body>
+    <h1>Package Details</h1>
+    <form method="POST" action="/">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" value="Seton Hall University"><br>
+
+        <label for="weight">Weight:</label>
+        <input type="text" id="weight" name="weight" value="0.5" style="width: 50px">
+        lb<br>
+
+        <label for="types">Type:</label>
+        <select name="types" id="types">
+            <option value="document">Document</option>
+            <option value="letter">Letter</option>
+            <option value="box">Box</option>
+            <option value="shipalone">Shipalone</option>
+        </select><br>
+
+        <label for="size">Size:</label>
+        <input type="text" id="size" name="size" value="4x4x3"><br>
+
+        <label for="origin">Origin:</label>
+        <input type="text" id="origin" name="origin" value="400 S Orange Ave, South Orange, NJ 07079"
+            style="width: 500px"><br>
+
+        <label for="destination">Destination:</label>
+        <input type="text" id="destination" name="destination" value="2000 Pennington Rd, Ewing Township, NJ 08628"
+            style="width: 500px"><br>
+
+
+        <label for="pickup_time">Pickup Time:</label>
+        <input type="text" id="pickup_time" name="pickup_time" value="7:00am"><br>
+
+        <label for="status">Status:</label>
+        <select name="status" id="status">
+            <option value="pending">Pending</option>
+            <option value="delivery">deliveried</option>
+            <option value="return">Return</option>
+            <option value="error">Error</option>
+        </select>
+        <br>
+
+        <label for="location">Location:</label>
+        <input type="text" id="location" name="location" value="UPSstore"><br>
+
+        <label for="referenceNum">Reference Number:</label>
+        <input type="text" id="referenceNum" name="referenceNum" value="123456"><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+
+</html>

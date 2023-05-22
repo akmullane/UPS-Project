@@ -1,0 +1,16 @@
+<mxfile host="app.diagrams.net" modified="2023-05-13T17:20:58.535Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36" etag="VIO1y1qiiyqppQrzXUIG" version="21.3.0" type="device">
+  <diagram id="R2lEEEUBdFMjLlhIrx00" name="Page-1">
+    <mxGraphModel dx="954" dy="636" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0" extFonts="Permanent Marker^https://fonts.googleapis.com/css?family=Permanent+Marker">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="IpklpMHm7jcCUHRtUB5h-2" value="&lt;div style=&quot;border-color: var(--border-color); font-size: 12px; text-align: left;&quot;&gt;deliveries&lt;/div&gt;" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="30" y="120" width="90" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="IpklpMHm7jcCUHRtUB5h-3" value="&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;id_delivery&lt;/span&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;id_package&lt;/div&gt;&lt;div&gt;first_name&lt;/div&gt;&lt;div&gt;last_name&lt;/div&gt;&lt;div&gt;street&lt;/div&gt;&lt;div&gt;floor&lt;/div&gt;&lt;div&gt;building&lt;/div&gt;&lt;div&gt;state&lt;/div&gt;&lt;div&gt;zipcode&lt;/div&gt;&lt;div&gt;id_driver&lt;/div&gt;&lt;div&gt;time_pick&lt;/div&gt;&lt;div&gt;time_delivered&lt;/div&gt;" style="align=center;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;" vertex="1" parent="IpklpMHm7jcCUHRtUB5h-2">
+          <mxGeometry y="50" width="90" height="190" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

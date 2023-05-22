@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>{% block title %}Package Tracker{% endblock %}</title>
+    <style>
+        /* CSS for the menu bar */
+        .menu {
+            display: flex;
+            justify-content: space-between;
+            background-color: #333;
+            padding: 10px;
+            color: #fff;
+        }
+
+        .menu a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .menu a:hover {
+            text-decoration: underline;
+        }
+
+        /* The rest of the CSS for the template */
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            margin: 20px auto;
+            max-width: 600px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            font-size: 18px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            width: 100%;
+            max-width: 400px;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+        }
+
+        button[type="submit"] {
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            background-color: #333;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #555;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- The menu bar HTML -->
+    <div class="menu">
+        <a href="/">Home</a>
+        <a href="/">Shipping</a>
+        <a href="{{ url_for('get_rating') }}">Rating</a>
+        <a href="{{ url_for('get_contact') }}">Contact Us</a>
+    </div>
+
+    <!-- The rest of the HTML for the template -->
+    {% block content %}<div class="container">
+        <h1>Package Tracker</h1>
+        <form method="POST" action="{{ url_for('get_tracking_info') }}">
+            <label for="tracking-number">Enter Tracking Number:</label>
+            <input type="text" id="tracking-number" name="trackingNumber" required>
+            <button type="submit">Track Package</button>
+        </form>
+        <div id="result"></div>
+    </div>
+    {%endblock%}
+</body>
+
+</html>
